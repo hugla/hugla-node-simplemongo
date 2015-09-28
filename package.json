@@ -1,0 +1,27 @@
+{
+  "name": "hugla-simplemongo",
+  "version": "0.1.0",
+  "description": "hugla web framework's node back-end simple mongodb module",
+  "keywords": [
+    "web",
+    "framework",
+    "hugla",
+    "mongodb"
+  ],
+  "license": "",
+  "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
+  "dependencies": {
+    "hugla-logger": "git+ssh://git@bitbucket.org:hugla/hugla-node-logger.git",
+    "mongodb": "2.0.44"
+  },
+  "devDependencies": {
+    "mocha": "2.3.3",
+    "chai": "2.1.0",
+    "jshint": "2.8.0"
+  },
+  "scripts": {
+    "lint": "jshint index.js lib/**.js",
+    "test": "mocha --reporter spec --bail"
+  }
+
+}
