@@ -2,7 +2,7 @@
 ### Hugla web framework's node back-end simple mongodb module
 
 ## Requirements
-Config
+The following configuration properties are required
 
 ```json
 {
