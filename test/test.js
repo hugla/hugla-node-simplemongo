@@ -40,19 +40,29 @@ describe("HuglaSimpleMongo", function() {
 
   describe("#connect()", function() {
     it("should call the callback without error", function(done) {
-        const simpleMongo = new HuglaSimpleMongo(testApp);
-        simpleMongo.connect(function(err) {
-          expect(err).to.not.exist;
-          done();
-        });
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        expect(err).to.not.exist;
+        done();
+      });
+    });
+
+    it("should call the callback with error in case of no config",
+    function(done) {
+      testApp.config.mongoUrl = null;
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        expect(err).to.be.instanceOf(Error);
+        done();
+      });
     });
 
     it("should set mongodb object on provided app", function(done) {
-        const simpleMongo = new HuglaSimpleMongo(testApp);
-        simpleMongo.connect(function(err) {
-          expect(testApp.mongodb).to.be.object;
-          done();
-        });
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        expect(testApp.mongodb).to.be.object;
+        done();
+      });
     });
   });
 

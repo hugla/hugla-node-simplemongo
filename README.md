@@ -1,4 +1,11 @@
 # HuglaSimpleMongo
 ### Hugla web framework's node back-end simple mongodb module
 
-## Usage
+## Requirements
+Config
+
+```json
+{
+  "mongoUrl": "mongodb://localhost:27017/test"
+}
+```
