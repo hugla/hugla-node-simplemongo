@@ -39,14 +39,56 @@ describe("HuglaSimpleMongo", function() {
   });
 
   describe("#connect()", function() {
+    it("should call the callback without error", function(done) {
+        const simpleMongo = new HuglaSimpleMongo(testApp);
+        simpleMongo.connect(function(err) {
+          expect(err).to.not.exist;
+          done();
+        });
+    });
 
+    it("should set mongodb object on provided app", function(done) {
+        const simpleMongo = new HuglaSimpleMongo(testApp);
+        simpleMongo.connect(function(err) {
+          expect(testApp.mongodb).to.be.object;
+          done();
+        });
+    });
   });
 
   describe("#close()", function() {
-
+    it("should call the callback without error", function(done) {
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        simpleMongo.close(function(err) {
+          expect(err).to.not.exist;
+          done();
+        });
+      });
+    });
   });
 
   describe("#collection()", function() {
+    it("should call the callback without error",
+    function() {
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        simpleMongo.collection("test", function(err, collection) {
+          expect(err).to.not.exist;
+          done();
+        });
+      });
+    });
 
+    it("should call the callback with collection object",
+    function() {
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        simpleMongo.collection("test", function(err, collection) {
+          expect(collection).to.be.object;
+          done();
+        });
+      });
+    });
   });
 });
