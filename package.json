@@ -11,7 +11,7 @@
   "license": "",
   "author": "noosxe <noosx.e@gmail.com> (https://noosxe.com/)",
   "dependencies": {
-    "hugla-logger": "git+ssh://git@bitbucket.org:hugla/hugla-node-logger.git",
+    "hugla-logger": "0.1.x",
     "mongodb": "2.0.44"
   },
   "devDependencies": {
@@ -25,5 +25,4 @@
     "lint": "jshint index.js lib/**.js",
     "test": "mocha --reporter spec --bail"
   }
-
 }
