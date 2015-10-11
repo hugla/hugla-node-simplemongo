@@ -103,7 +103,7 @@ describe("HuglaSimpleMongo", function() {
 
   describe("#collection()", function() {
     it("should call the callback without error",
-    function() {
+    function(done) {
       const simpleMongo = new HuglaSimpleMongo(testApp);
       simpleMongo.connect(function(err) {
         simpleMongo.collection("test", function(err, collection) {
@@ -114,7 +114,7 @@ describe("HuglaSimpleMongo", function() {
     });
 
     it("should call the callback with collection object",
-    function() {
+    function(done) {
       const simpleMongo = new HuglaSimpleMongo(testApp);
       simpleMongo.connect(function(err) {
         simpleMongo.collection("test", function(err, collection) {
