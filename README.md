@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/hugla/hugla-node-simplemongo/badge.svg?branch=master&service=github)](https://coveralls.io/github/hugla/hugla-node-simplemongo?branch=master)
 
 ## Requirements
+
 The following configuration properties are required
 
 ```json
@@ -12,3 +13,7 @@ The following configuration properties are required
   "mongoUrl": "mongodb://localhost:27017/test"
 }
 ```
+
+## License
+
+[MIT](LICENSE)
