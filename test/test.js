@@ -57,6 +57,16 @@ describe("HuglaSimpleMongo", function() {
       });
     });
 
+    it("should call the callback with error in case of no connection fail",
+    function(done) {
+      testApp.config.mongoUrl = "mongodb://localhost:27018/test";
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        expect(err).to.be.instanceOf(Error);
+        done();
+      });
+    });
+
     it("should set mongodb object on provided app", function(done) {
       const simpleMongo = new HuglaSimpleMongo(testApp);
       simpleMongo.connect(function(err) {
@@ -67,7 +77,20 @@ describe("HuglaSimpleMongo", function() {
   });
 
   describe("#close()", function() {
-    it("should call the callback without error", function(done) {
+    it("should call the callback without error in case of existing db connection",
+    function(done) {
+      const simpleMongo = new HuglaSimpleMongo(testApp);
+      simpleMongo.connect(function(err) {
+        simpleMongo.close(function(err) {
+          expect(err).to.not.exist;
+          done();
+        });
+      });
+    });
+
+    it("should call the callback without error in case of failed db connection",
+    function(done) {
+      testApp.config.mongoUrl = "mongodb://localhost:27018/test";
       const simpleMongo = new HuglaSimpleMongo(testApp);
       simpleMongo.connect(function(err) {
         simpleMongo.close(function(err) {
